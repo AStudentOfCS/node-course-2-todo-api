@@ -7,11 +7,25 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   }
   console.log('Connected to MongoDB server!');
 
-  db.collection('Users').find({name: 'AStudentOfCS'}).toArray().then((docs) => {
+  db.collection('Users').find().toArray().then((docs) => {
+    console.log('Users');
     console.log(JSON.stringify(docs, undefined, 2));
   }, (err) => {
-    console.log('Unable to fetch users', err);
+    console.log('Unable to fetch todos', err);
   });
+
+  // db.collection('Users').find({name: 'AStudentOfCS'}).toArray().then((docs) => {
+  //   console.log(JSON.stringify(docs, undefined, 2));
+  // }, (err) => {
+  //   console.log('Unable to fetch users', err);
+  // });
+
+  // db.collection('Todos').find().toArray().then((docs) => {
+  //   console.log('Todos');
+  //   console.log(JSON.stringify(docs, undefined, 2));
+  // }, (err) => {
+  //   console.log('Unable to fetch todos', err);
+  // });
 
   // db.collection('Todos').find().count().then((count) => {
   //   console.log(`Total count: ${count}`);
