@@ -20,7 +20,7 @@ app.post('/todos', authenticate, (req, res) => {
     text: req.body.text,
     _creator: req.user._id
   });
-
+  console.log(_creator);
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -35,7 +35,7 @@ app.get('/todos', authenticate, (req, res) => {
     res.send({todos});
   }, (e) => {
     res.status(400).send(e);
-  })
+  });
 });
 
 app.get('/todos/:id', authenticate, (req, res) => {
